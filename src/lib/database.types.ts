@@ -51,6 +51,32 @@ export interface Database {
 				};
 				Relationships: [];
 			};
+			students: {
+				Row: {
+					full_name: string;
+					group: string;
+					id: string;
+				};
+				Insert: {
+					full_name: string;
+					group: string;
+					id?: string;
+				};
+				Update: {
+					full_name?: string;
+					group?: string;
+					id?: string;
+				};
+				Relationships: [
+					{
+						foreignKeyName: 'students_group_fkey';
+						columns: ['group'];
+						isOneToOne: false;
+						referencedRelation: 'groups';
+						referencedColumns: ['id'];
+					}
+				];
+			};
 		};
 		Views: {
 			[_ in never]: never;
