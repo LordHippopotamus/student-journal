@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import PeriodsTable from './PeriodsTable.svelte';
-	import SelectDate from './SelectDate.svelte';
+	import SelectDate from '$lib/SelectDate.svelte';
 
 	export let data: PageData;
 
