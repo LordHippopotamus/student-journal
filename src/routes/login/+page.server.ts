@@ -15,6 +15,6 @@ export const actions = {
 
 		if (error) return fail(error.status ?? 500, { success: false, message: error.message });
 
-		throw redirect(302, '/');
+		throw redirect(302, '/admin');
 	}
 } satisfies Actions;
