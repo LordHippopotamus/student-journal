@@ -16,7 +16,7 @@
 		on:change={(event) => {
 			date = new Date(+event.currentTarget.value, date.getMonth());
 		}}
-		class="p-1 border border-slate-400 rounded w-24 text-base box-border"
+		class="p-1 border border-slate-950 rounded w-24 text-base box-border"
 	/>
 	<select
 		name="month"
@@ -24,7 +24,7 @@
 		on:change={(event) => {
 			date = new Date(date.getFullYear(), +event.currentTarget.value);
 		}}
-		class="p-1 border bg-transparent border-slate-400 rounded w-24 text-base box-border h-[34px] block"
+		class="p-1 border bg-transparent border-slate-950 rounded w-24 text-base box-border h-[34px] block"
 	>
 		<option value={0}>Январь</option>
 		<option value={1}>Февраль</option>

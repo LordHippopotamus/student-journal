@@ -1,4 +1,4 @@
 <input
 	{...$$restProps}
-	class={`bg-transparent border border-slate-400 rounded p-2  ${$$props.class}`}
+	class={`bg-transparent border border-slate-950 rounded p-2  ${$$props.class}`}
 />

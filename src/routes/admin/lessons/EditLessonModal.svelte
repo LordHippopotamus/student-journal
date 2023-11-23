@@ -32,7 +32,7 @@
 		>
 			<Title level={3}>Изменить название предмета</Title>
 			<Input name="name" value={editLessonModal.name} placeholder="Название предмета" />
-			<div>
+			<div class="flex gap-1">
 				<Button
 					disabled={loading}
 					on:click={(event) => {

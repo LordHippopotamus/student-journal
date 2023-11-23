@@ -32,7 +32,7 @@
 		>
 			<Title level={3}>Изменить название гурппы</Title>
 			<Input name="name" value={editGroupModal.name} placeholder="Название группы" />
-			<div>
+			<div class="flex gap-1">
 				<Button
 					disabled={loading}
 					on:click={(event) => {

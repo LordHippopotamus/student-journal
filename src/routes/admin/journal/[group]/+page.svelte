@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
-	import { Title } from '$lib/ui';
+	import { Button, Title } from '$lib/ui';
 
 	export let data: PageData;
 </script>
@@ -10,12 +10,9 @@
 <ul class="flex gap-1 mt-1">
 	{#each data.lessons as lesson}
 		<li>
-			<a
-				href={$page.url.pathname + '/' + lesson.id}
-				class="block bg-slate-500 hover:bg-slate-600 active:bg-slate-700 transition py-2 px-6 text-white rounded"
-			>
+			<Button element="a" href={$page.url.pathname + '/' + lesson.id}>
 				{lesson.name}
-			</a>
+			</Button>
 		</li>
 	{/each}
 </ul>

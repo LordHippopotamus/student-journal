@@ -1,25 +1,30 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	const routes = [
-		{ url: '/admin/groups', name: 'Группы' },
 		{ url: '/admin/lessons', name: 'Предметы' },
+		{ url: '/admin/groups', name: 'Группы' },
 		{ url: '/admin/students', name: 'Студенты' },
 		{ url: '/admin/journal', name: 'Журнал' }
 	];
 </script>
 
 <div class="flex">
-	<ul class="border-r bg-slate-500 border-slate-400 block w-32 min-h-screen">
+	<ul class="border-r border-slate-950 block w-32 min-h-screen">
+		<li class="">
+			<a href="/" class="block w-full p-2 transition hover:bg-slate-100 active:bg-slate-200">
+				Главная
+			</a>
+		</li>
 		{#each routes as route}
-			<li class="text-white">
+			<li class="">
 				{#if $page.url.pathname.search(route.url) !== -1}
-					<div class="w-full p-2 bg-slate-700">
+					<div class="w-full p-2 bg-slate-950 text-slate-50">
 						{route.name}
 					</div>
 				{:else}
 					<a
 						href={route.url}
-						class="block w-full p-2 transition hover:bg-slate-600 active:bg-slate-700"
+						class="block w-full p-2 transition hover:bg-slate-100 active:bg-slate-200"
 					>
 						{route.name}
 					</a>

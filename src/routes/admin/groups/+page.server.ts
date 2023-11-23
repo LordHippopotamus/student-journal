@@ -34,7 +34,6 @@ export const actions = {
 		const formData = await request.formData();
 		const id = formData.get('id') as string;
 		const name = formData.get('name') as string;
-
 		const { error: supabaseError } = await supabase.from('groups').update({ name }).eq('id', id);
 
 		if (supabaseError) throw error(500, supabaseError?.message);

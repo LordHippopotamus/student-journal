@@ -5,22 +5,24 @@
 	let loading = false;
 </script>
 
-<Title level={2}>Добавить группу</Title>
-<form
-	method="post"
-	action="?/add_group"
-	use:enhance={() => {
-		loading = true;
-		return async ({ result }) => {
-			await applyAction(result);
-			await invalidate('admin:group');
-			loading = false;
-		};
-	}}
-	class="flex gap-1 flex-wrap mt-1"
->
-	<Input type="text" name="name" placeholder="Название группы" />
-	<Input type="number" step="1" name="start_year" placeholder="Год начала обучения" />
-	<Input type="number" step="1" name="end_year" placeholder="Год окончания обучения" />
-	<Button disabled={loading}>Добавить</Button>
-</form>
+<div>
+	<Title level={2}>Добавить группу</Title>
+	<form
+		method="post"
+		action="?/add_group"
+		use:enhance={() => {
+			loading = true;
+			return async ({ result }) => {
+				await applyAction(result);
+				await invalidate('admin:group');
+				loading = false;
+			};
+		}}
+		class="flex gap-1 flex-wrap mt-1"
+	>
+		<Input type="text" name="name" placeholder="Название группы" />
+		<Input type="number" step="1" name="start_year" placeholder="Год начала обучения" />
+		<Input type="number" step="1" name="end_year" placeholder="Год окончания обучения" />
+		<Button disabled={loading}>Добавить</Button>
+	</form>
+</div>

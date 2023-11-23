@@ -32,7 +32,7 @@
 		>
 			<Title level={3}>Изменить имя студента</Title>
 			<Input name="full_name" value={editStudentModal.full_name} placeholder="Полное имя" />
-			<div>
+			<div class="flex gap-1">
 				<Button
 					disabled={loading}
 					on:click={(event) => {

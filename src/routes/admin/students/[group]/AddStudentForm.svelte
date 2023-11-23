@@ -8,20 +8,22 @@
 	let loading = false;
 </script>
 
-<Title level={2}>Добавить студента для группы <span>{groupName}</span></Title>
-<form
-	method="post"
-	action="?/add_student"
-	use:enhance={() => {
-		loading = true;
-		return async ({ result }) => {
-			await applyAction(result);
-			await invalidate('admin:students');
-			loading = false;
-		};
-	}}
-	class="flex gap-1 flex-wrap mt-1"
->
-	<Input type="text" name="full_name" placeholder="Полное имя" />
-	<Button disabled={loading}>Добавить</Button>
-</form>
+<div>
+	<Title level={2}>Добавить студента для группы <span>{groupName}</span></Title>
+	<form
+		method="post"
+		action="?/add_student"
+		use:enhance={() => {
+			loading = true;
+			return async ({ result }) => {
+				await applyAction(result);
+				await invalidate('admin:students');
+				loading = false;
+			};
+		}}
+		class="flex gap-1 flex-wrap mt-1"
+	>
+		<Input type="text" name="full_name" placeholder="Полное имя" />
+		<Button disabled={loading}>Добавить</Button>
+	</form>
+</div>

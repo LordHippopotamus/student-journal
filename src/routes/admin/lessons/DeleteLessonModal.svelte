@@ -34,7 +34,7 @@
 				Вы действительно хотите удалить предмет
 				<span class="font-bold">{deleteLessonModal.name}</span>? Это действие необратимо.
 			</p>
-			<div>
+			<div class="flex gap-1">
 				<Button
 					disabled={loading}
 					on:click={(event) => {

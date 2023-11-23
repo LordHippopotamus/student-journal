@@ -1,16 +1,20 @@
 <script lang="ts">
 	export let disabled = false;
+	export let element: 'button' | 'a' = 'button';
 </script>
 
-<button
+<!-- The rule can be disabled because component only renders a button or link.
+	 So the role attribute doesn't make sense. -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<svelte:element
+	this={element}
 	{...$$restProps}
-	{disabled}
-	class={`self-start px-6 py-2 rounded transition ${
+	class={`block self-start px-6 py-2 rounded transition border ${
 		disabled
-			? 'bg-slate-200 text-slate-700'
-			: 'bg-slate-500 hover:bg-slate-600 active:bg-slate-700 text-white'
+			? 'border-slate-400 text-slate-400'
+			: ' border-slate-950 hover:bg-slate-100 active:bg-slate-200'
 	} ${$$props.class}`}
 	on:click
 >
 	<slot />
-</button>
+</svelte:element>
