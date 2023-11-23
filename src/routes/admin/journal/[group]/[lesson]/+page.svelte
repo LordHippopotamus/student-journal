@@ -8,9 +8,17 @@
 	let date = new Date();
 </script>
 
-<ul>
-	<li>Группа: <span>{data.group.name} ({data.group.start_year} - {data.group.end_year})</span></li>
-	<li>Предмет: <span>{data.lesson.name}</span></li>
+<ul class="flex flex-col gap-1">
+	<li>
+		Группа: <span class="font-bold"
+			>{data.group.name} ({data.group.start_year} - {data.group.end_year})</span
+		>
+	</li>
+	<li>Предмет: <span class="font-bold">{data.lesson.name}</span></li>
+	<li class="flex gap-1 items-center">
+		Дата: <SelectDate min={data.group.start_year} max={data.group.end_year} bind:date />
+	</li>
 </ul>
-<SelectDate min={data.group.start_year} max={data.group.end_year} bind:date />
-<PeriodsTable {date} students={data.students} periods={data.periods} lesson={data.lesson} />
+<div class="mt-2">
+	<PeriodsTable {date} students={data.students} periods={data.periods} lesson={data.lesson} />
+</div>

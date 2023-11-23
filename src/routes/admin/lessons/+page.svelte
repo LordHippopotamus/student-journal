@@ -5,5 +5,7 @@
 	export let data: PageData;
 </script>
 
-<AddLessonForm />
-<LessonsList lessons={data.lessons} />
+<div class="flex flex-col gap-2">
+	<AddLessonForm />
+	<LessonsList lessons={data.lessons} />
+</div>

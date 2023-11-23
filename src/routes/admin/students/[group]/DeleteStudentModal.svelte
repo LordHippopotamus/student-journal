@@ -2,37 +2,50 @@
 	import { applyAction, enhance } from '$app/forms';
 	import { invalidate } from '$app/navigation';
 	import type { Tables } from '$lib/database.types';
-	import { createEventDispatcher } from 'svelte';
+	import { Button, Title } from '$lib/ui';
 
-	export let open: boolean;
-	export let student: Tables<'students'>;
-
-	const dispatch = createEventDispatcher();
-	const dispatchCloseEvent = () => dispatch('close');
+	export let deleteStudentModal: null | Tables<'students'>;
 
 	let loading = false;
 </script>
 
-<dialog {open}>
-	<form
-		method="post"
-		action="?/delete_student"
-		use:enhance={({ data }) => {
-			data.append('id', student.id);
-			loading = true;
-			return async ({ result }) => {
-				await applyAction(result);
-				await invalidate('admin:students');
-				loading = false;
-				dispatchCloseEvent();
-			};
-		}}
+{#if deleteStudentModal}
+	<div
+		class="bg-slate-50 border border-slate-400 rounded shadow-lg p-2 w-80 sm:w-96 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]"
 	>
-		<h4>Удаление студента</h4>
-		<p>
-			Вы действительно хотите удалить студента <span>{student.full_name}</span>? Это действие необратимо
-		</p>
-		<button disabled={loading} on:click|preventDefault={dispatchCloseEvent}>Отмена</button>
-		<button disabled={loading}>Удалить</button>
-	</form>
-</dialog>
+		<form
+			method="post"
+			action="?/delete_student"
+			use:enhance={({ data }) => {
+				if (!deleteStudentModal) return;
+				data.append('id', deleteStudentModal.id);
+				loading = true;
+				return async ({ result }) => {
+					await applyAction(result);
+					await invalidate('admin:students');
+					loading = false;
+					deleteStudentModal = null;
+				};
+			}}
+			class="flex flex-col gap-2"
+		>
+			<Title level={3}>Удаление предмета</Title>
+			<p>
+				Вы действительно хотите удалить студента
+				<span class="font-bold">{deleteStudentModal.full_name}</span>? Это действие необратимо.
+			</p>
+			<div>
+				<Button
+					disabled={loading}
+					on:click={(event) => {
+						event.preventDefault();
+						deleteStudentModal = null;
+					}}
+				>
+					Отмена
+				</Button>
+				<Button disabled={loading}>Удалить</Button>
+			</div>
+		</form>
+	</div>
+{/if}

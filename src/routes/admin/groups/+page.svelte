@@ -5,5 +5,7 @@
 	export let data: PageData;
 </script>
 
-<AddGroupForm />
-<GroupList groups={data.groups} />
+<div class="flex flex-col gap-2">
+	<AddGroupForm />
+	<GroupList groups={data.groups} />
+</div>

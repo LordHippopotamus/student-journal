@@ -6,5 +6,7 @@
 	export let data: PageData;
 </script>
 
-<AddStudentForm groupName={data.group.name} />
-<StudentsList students={data.students} groupName={data.group.name} />
+<div class="flex flex-col gap-2">
+	<AddStudentForm groupName={data.group.name} />
+	<StudentsList students={data.students} groupName={data.group.name} />
+</div>

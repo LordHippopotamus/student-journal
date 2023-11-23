@@ -1,51 +1,25 @@
 <script lang="ts">
-	import { clickoutside } from '@svelte-put/clickoutside';
 	import type { Tables } from '$lib/database.types';
-	import { applyAction, enhance } from '$app/forms';
-	import { invalidate } from '$app/navigation';
-	import DeleteGroupModal from './DeleteGroupModal.svelte';
+	import { Pencil, Trash } from '$lib/icons';
+	import { IconButton } from '$lib/ui';
+	import { createEventDispatcher } from 'svelte';
 
 	export let group: Tables<'groups'>;
 
-	let editing = false;
-	let loading = false;
-	let open = false;
+	const dispatch = createEventDispatcher();
 </script>
 
-<tr>
-	<td
-		on:click={() => (editing = true)}
-		use:clickoutside
-		on:clickoutside={() => {
-			if (loading) return;
-			editing = false;
-		}}
-	>
-		{#if editing}
-			<form
-				method="post"
-				action="?/edit_group"
-				use:enhance={({ data }) => {
-					data.append('id', group.id);
-					loading = true;
-					return async ({ result }) => {
-						await applyAction(result);
-						await invalidate('admin:group');
-						loading = false;
-						editing = false;
-					};
-				}}
-			>
-				<input name="name" value={group.name} placeholder="Название группы" />
-				<button disabled={loading} on:click={() => (editing = false)}>&#10006;</button>
-				<button disabled={loading} type="submit">&#10004;</button>
-			</form>
-		{:else}
-			{group.name}
-		{/if}
-	</td>
-	<td>{group.start_year}</td>
-	<td>{group.end_year}</td>
-	<td><button on:click={() => (open = true)}>&#10006;</button></td>
-</tr>
-<DeleteGroupModal {open} on:close={() => (open = false)} group={group} />
+<li class="flex items-center gap-2">
+	<span>
+		{group.name} ({group.start_year} -
+		{group.end_year})
+	</span>
+	<div class="flex gap-1">
+		<IconButton on:click={() => dispatch('edit')}>
+			<Pencil />
+		</IconButton>
+		<IconButton on:click={() => dispatch('delete')}>
+			<Trash />
+		</IconButton>
+	</div>
+</li>

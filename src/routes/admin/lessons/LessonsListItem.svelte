@@ -1,49 +1,24 @@
 <script lang="ts">
-	import { clickoutside } from '@svelte-put/clickoutside';
 	import type { Tables } from '$lib/database.types';
-	import { applyAction, enhance } from '$app/forms';
-	import { invalidate } from '$app/navigation';
-	import DeleteLessonModal from './DeleteLessonModal.svelte';
+	import { Pencil, Trash } from '$lib/icons';
+	import { IconButton } from '$lib/ui';
+	import { createEventDispatcher } from 'svelte';
 
 	export let lesson: Tables<'lessons'>;
 
-	let editing = false;
-	let loading = false;
-	let open = false;
+	const dispatch = createEventDispatcher();
 </script>
 
-<tr>
-	<td
-		on:click={() => (editing = true)}
-		use:clickoutside
-		on:clickoutside={() => {
-			if (loading) return;
-			editing = false;
-		}}
-	>
-		{#if editing}
-			<form
-				method="post"
-				action="?/edit_lesson"
-				use:enhance={({ data }) => {
-					data.append('id', lesson.id);
-					loading = true;
-					return async ({ result }) => {
-						await applyAction(result);
-						await invalidate('admin:lessons');
-						loading = false;
-						editing = false;
-					};
-				}}
-			>
-				<input name="name" value={lesson.name} placeholder="Название предмета" />
-				<button disabled={loading} on:click={() => (editing = false)}>&#10006;</button>
-				<button disabled={loading} type="submit">&#10004;</button>
-			</form>
-		{:else}
-			{lesson.name}
-		{/if}
-	</td>
-	<td><button on:click={() => (open = true)}>&#10006;</button></td>
-</tr>
-<DeleteLessonModal {open} on:close={() => (open = false)} {lesson} />
+<li class="flex items-center gap-2">
+	<span>
+		{lesson.name}
+	</span>
+	<div class="flex gap-1">
+		<IconButton on:click={() => dispatch('edit')}>
+			<Pencil />
+		</IconButton>
+		<IconButton on:click={() => dispatch('delete')}>
+			<Trash />
+		</IconButton>
+	</div>
+</li>
