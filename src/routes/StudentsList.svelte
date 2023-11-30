@@ -8,7 +8,7 @@
 	{#each students as student}
 		<li>
 			<a
-				class="hover:bg-slate-200 active:bg-slate-300 block px-6 py-2 rounded transition"
+				class="hover:bg-slate-200 active:bg-slate-300 dark:hover:bg-slate-900 dark:active:bg-slate-800 block px-6 py-2 rounded transition"
 				href={'journal/' + student.id}>{student.full_name}</a
 			>
 		</li>

@@ -36,7 +36,7 @@
 </script>
 
 <td
-	style="border: 1px solid black;"
+	class="mt-2 border border-slate-950 dark:border-slate-50 w-4"
 	on:dblclick={() => (editing = true)}
 	use:clickoutside
 	on:clickoutside={handleSave}
@@ -49,7 +49,7 @@
 			disabled={loading}
 			{value}
 			on:change={(event) => (value = event.currentTarget.value)}
-			style="width: 3rem"
+			class="w-4 bg-transparent"
 			autofocus
 			on:keyup={(event) => {
 				if (event.key === 'Escape') editing = false;

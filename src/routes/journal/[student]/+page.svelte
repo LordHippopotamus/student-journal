@@ -40,18 +40,18 @@
 	</ul>
 
 	<div class="w-full overflow-x-auto">
-		<table class="mt-2">
+		<table class="mt-2 border border-slate-950 dark:border-slate-50">
 			<tr>
 				<th>Предмет/Дата</th>
 				{#each days as day}
-					<th>{day}</th>
+					<th class="border border-slate-950 dark:border-slate-50">{day}</th>
 				{/each}
 			</tr>
 			{#each data.lessons as lesson}
 				<tr>
-					<td>{lesson.name}</td>
+					<td class="border border-slate-950 dark:border-slate-50">{lesson.name}</td>
 					{#each days as day}
-						<td>
+						<td class="border border-slate-950 dark:border-slate-50">
 							{getMark(lesson.id, new Date(date.getFullYear(), date.getMonth(), day))}
 						</td>
 					{/each}
@@ -60,11 +60,3 @@
 		</table>
 	</div>
 </div>
-
-<style>
-	table,
-	th,
-	td {
-		border: 1px solid black;
-	}
-</style>

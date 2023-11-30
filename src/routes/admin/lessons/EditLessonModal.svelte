@@ -12,7 +12,7 @@
 
 {#if editLessonModal}
 	<div
-		class="bg-slate-50 border border-slate-400 rounded shadow-lg p-2 w-64 sm:w-96 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]"
+		class="border bg-slate-50 border-slate-950 dark:bg-slate-900 dark:border-slate-50 rounded shadow-lg p-2 w-64 sm:w-96 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]"
 	>
 		<form
 			method="post"

@@ -8,7 +8,7 @@
 	let loading = false;
 </script>
 
-<div class="w-96 mx-auto my-16 p-4 shadow-lg rounded border-slate-950 border">
+<div class="w-96 mx-auto my-16 p-4 shadow-lg rounded border-slate-950 dark:border-slate-50 dark:bg-slate-900 border">
 	<Title level={1} class="text-center">Вход</Title>
 	<form
 		class="flex flex-col gap-4 mt-4"
@@ -24,7 +24,7 @@
 		<Input name="email" type="email" placeholder="Почта" />
 		<Input name="password" type="password" placeholder="Пароль" />
 		{#if form && !form.success}
-			<div class="p-4 shadow rounded bg-slate-100 border-slate-950 border">
+			<div class="p-4 shadow rounded bg-slate-100 dark:bg-slate-800 dark:border-slate-50 border-slate-950 border">
 				<Title level={3}>Ошибка входа!</Title>
 				<span>{form.message}</span>
 			</div>
