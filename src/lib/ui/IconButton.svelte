@@ -7,8 +7,8 @@
 	{disabled}
 	class={`self-start p-2 rounded transition border ${
 		disabled
-			? 'border-slate-400 text-slate-400 dark:border-slate-600 dark:text-slate-600'
-			: ' border-slate-950 hover:bg-slate-100 active:bg-slate-200 dark:border-slate-50 dark:hover:bg-slate-800 dark:active:bg-slate-700'
+			? 'border-zinc-400 text-zinc-400 dark:border-zinc-600 dark:text-zinc-600'
+			: ' border-zinc-950 hover:bg-zinc-100 active:bg-zinc-200 dark:border-zinc-50 dark:hover:bg-zinc-800 dark:active:bg-zinc-700'
 	} ${$$props.class}`}
 	on:click
 >

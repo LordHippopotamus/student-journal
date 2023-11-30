@@ -2,6 +2,6 @@
 	import '../app.css';
 </script>
 
-<div class="bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-50 min-h-screen w-screen absolute">
+<div class="bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50 min-h-screen w-screen absolute">
 	<slot />
 </div>

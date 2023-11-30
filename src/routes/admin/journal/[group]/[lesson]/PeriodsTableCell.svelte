@@ -36,7 +36,7 @@
 </script>
 
 <td
-	class="mt-2 border border-slate-950 dark:border-slate-50 w-4"
+	class="mt-2 border border-zinc-950 dark:border-zinc-50 w-4"
 	on:dblclick={() => (editing = true)}
 	use:clickoutside
 	on:clickoutside={handleSave}

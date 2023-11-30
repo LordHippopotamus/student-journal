@@ -27,7 +27,7 @@
 	$: full_name, group, applySearchParams();
 </script>
 
-<div class="my-8 p-8 shadow-lg rounded border-slate-950 dark:border-slate-50 dark:bg-slate-900 border flex justify-center">
+<div class="my-8 p-8 shadow-lg rounded border-zinc-950 dark:border-zinc-50 dark:bg-zinc-900 border flex justify-center">
 	<div class="flex flex-col gap-2">
 		<Title level={1} class="text-center">Поиск студента</Title>
 		<div class="flex flex-wrap gap-1">
@@ -35,7 +35,7 @@
 			<select
 				name="group"
 				bind:value={group}
-				class="p-1 border bg-transparent border-slate-950 dark:border-slate-50 rounded text-base box-border h-[42px] block cursor-pointer"
+				class="p-1 border bg-transparent border-zinc-950 dark:border-zinc-50 rounded text-base box-border h-[42px] block cursor-pointer"
 			>
 				<option value="">Выберите группу</option>
 				{#each groups as group}

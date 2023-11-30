@@ -28,16 +28,16 @@
 		}) ?? null;
 </script>
 
-<table  class="mt-2 border border-slate-950 dark:border-slate-50">
+<table  class="mt-2 border border-zinc-950 dark:border-zinc-50">
 	<tr>
 		<th>Имя/Дата</th>
 		{#each days as day}
-			<th  class="mt-2 border border-slate-950 dark:border-slate-50">{day}</th>
+			<th  class="mt-2 border border-zinc-950 dark:border-zinc-50">{day}</th>
 		{/each}
 	</tr>
 	{#each students as student}
 		<tr>
-			<td class="mt-2 border border-slate-950 dark:border-slate-50">{student.full_name}</td>
+			<td class="mt-2 border border-zinc-950 dark:border-zinc-50">{student.full_name}</td>
 			{#each days as day}
 				<PeriodsTableCell
 					date={new Date(date.getFullYear(), date.getMonth(), day + 1)}
