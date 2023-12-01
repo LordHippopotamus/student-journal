@@ -36,7 +36,7 @@
 		{/each}
 	</ul>
 
-	<div class="px-2 py-4 w-full sm:relative">
+	<div class="px-2 py-4 grow overflow-hidden sm:relative">
 		<slot />
 	</div>
 </div>

@@ -19,6 +19,6 @@
 		Дата: <SelectDate min={data.group.start_year} max={data.group.end_year} bind:date />
 	</li>
 </ul>
-<div class="mt-2">
+<div class="mt-2 w-full overflow-x-auto">
 	<PeriodsTable {date} students={data.students} periods={data.periods} lesson={data.lesson} />
 </div>
