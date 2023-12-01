@@ -4,14 +4,18 @@
 
 	export let data: { value: string; label: string }[];
 	export let value = data[0].value;
-
+	
 	let open = false;
 </script>
 
-<div class="relative w-44" use:clickoutside on:clickoutside={() => (open = false)}>
+<div
+	class={`relative w-44  ${$$props.class}`}
+	use:clickoutside
+	on:clickoutside={() => (open = false)}
+>
 	<button
 		on:click={() => (open = !open)}
-		class={`whitespace-nowrap flex items-center gap-1 justify-between w-full p-2 rounded transition border border-zinc-950 dark:border-zinc-50 ${$$props.class}`}
+		class="whitespace-nowrap flex items-center gap-1 justify-between w-full p-2 rounded transition border border-zinc-950 dark:border-zinc-50"
 	>
 		{data.find((el) => el.value === value)?.label}
 		<div class={open ? 'rotate-180' : ''}>

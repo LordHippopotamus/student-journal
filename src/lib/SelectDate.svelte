@@ -1,42 +1,44 @@
 <script lang="ts">
+	import { Input, Select } from './ui';
+
 	export let date: Date, min: number, max: number;
 	let currentYear = new Date().getFullYear();
+
+	let month = String(date.getMonth()),
+		year = String(date.getFullYear());
+
+	$: year, month, (date = new Date(+year, +month));
 </script>
 
 <div class="flex gap-1">
 	<!-- TODO: min max not working if user types value by keyboard -->
-	<input
+	<Input
 		name="year"
 		type="number"
 		step="1"
 		placeholder="Год"
 		{min}
 		max={currentYear < max ? currentYear : max}
-		value={date.getFullYear()}
-		on:change={(event) => {
-			date = new Date(+event.currentTarget.value, date.getMonth());
-		}}
-		class="p-1 border border-zinc-950 bg-transparent dark:border-zinc-50 rounded w-24 box-border"
+		bind:value={year}
+		class="w-24"
 	/>
-	<select
+	<Select
 		name="month"
-		value={date.getMonth()}
-		on:change={(event) => {
-			date = new Date(date.getFullYear(), +event.currentTarget.value);
-		}}
-		class="p-1 border bg-transparent border-zinc-950 dark:border-zinc-50 rounded w-24 box-border h-[34px] block"
-	>
-		<option value={0}>Январь</option>
-		<option value={1}>Февраль</option>
-		<option value={2}>Март</option>
-		<option value={3}>Апрель</option>
-		<option value={4}>Май</option>
-		<option value={5}>Июнь</option>
-		<option value={6}>Июль</option>
-		<option value={7}>Август</option>
-		<option value={8}>Сентябрь</option>
-		<option value={9}>Октябрь</option>
-		<option value={10}>Ноябрь</option>
-		<option value={11}>Декабрь</option>
-	</select>
+		bind:value={month}
+		data={[
+			{ value: '0', label: 'Январь' },
+			{ value: '1', label: 'Февраль' },
+			{ value: '2', label: 'Март' },
+			{ value: '3', label: 'Апрель' },
+			{ value: '4', label: 'Май' },
+			{ value: '5', label: 'Июнь' },
+			{ value: '6', label: 'Июль' },
+			{ value: '7', label: 'Август' },
+			{ value: '8', label: 'Сентябрь' },
+			{ value: '9', label: 'Октябрь' },
+			{ value: '10', label: 'Ноябрь' },
+			{ value: '11', label: 'Декабрь' }
+		]}
+		class="!w-28"
+	/>
 </div>
