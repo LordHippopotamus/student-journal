@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { Tables } from '$lib/database.types';
-	import { Input, Title } from '$lib/ui';
+	import { Input, Select, Title } from '$lib/ui';
 	import { onMount } from 'svelte';
 
 	export let groups: Tables<'groups'>[];
@@ -27,21 +27,20 @@
 	$: full_name, group, applySearchParams();
 </script>
 
-<div class="my-8 p-8 shadow-lg rounded border-zinc-950 dark:border-zinc-50 dark:bg-zinc-900 border flex justify-center">
+<div
+	class="my-8 p-8 shadow-lg rounded border-zinc-950 dark:border-zinc-50 dark:bg-zinc-900 border flex justify-center"
+>
 	<div class="flex flex-col gap-2">
 		<Title level={1} class="text-center">Поиск студента</Title>
 		<div class="flex flex-wrap gap-1">
 			<Input bind:value={full_name} name="full_name" type="text" placeholder="Ф.И.О. студента" />
-			<select
-				name="group"
+			<Select
 				bind:value={group}
-				class="p-1 border bg-transparent border-zinc-950 dark:border-zinc-50 rounded text-base box-border h-[42px] block cursor-pointer"
-			>
-				<option value="">Выберите группу</option>
-				{#each groups as group}
-					<option value={group.id}>{group.name}</option>
-				{/each}
-			</select>
+				data={[
+					{ value: '', label: 'Выберите группу' },
+					...groups.map((el) => ({ value: el.id, label: el.name }))
+				]}
+			/>
 		</div>
 	</div>
 </div>

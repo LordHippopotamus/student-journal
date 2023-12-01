@@ -10,13 +10,16 @@
 
 <div class="flex">
 	<ul class="border-r border-zinc-950 dark:border-zinc-50 block w-32 min-h-screen">
-		<li class="">
-			<a href="/" class="block w-full p-2 transition hover:bg-zinc-100 active:bg-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-700">
+		<li>
+			<a
+				href="/"
+				class="block w-full p-2 transition hover:bg-zinc-100 active:bg-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-700"
+			>
 				Главная
 			</a>
 		</li>
 		{#each routes as route}
-			<li class="">
+			<li>
 				{#if $page.url.pathname.search(route.url) !== -1}
 					<div class="w-full p-2 bg-zinc-950 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-950">
 						{route.name}
