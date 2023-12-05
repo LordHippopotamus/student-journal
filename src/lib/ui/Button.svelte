@@ -12,7 +12,7 @@
 	class={`block self-start px-6 py-2 rounded transition border ${
 		disabled
 			? 'border-zinc-400 text-zinc-400 dark:border-zinc-600 dark:text-zinc-600'
-			: ' border-zinc-950 hover:bg-zinc-100 active:bg-zinc-200 dark:border-zinc-50 dark:hover:bg-zinc-800 dark:active:bg-zinc-700'
+			: ' border-zinc-950 hover:bg-zinc-200 active:bg-zinc-300 dark:border-zinc-50 dark:hover:bg-zinc-800 dark:active:bg-zinc-700'
 	} ${$$props.class}`}
 	on:click
 >
